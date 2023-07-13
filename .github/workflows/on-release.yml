@@ -21,4 +21,6 @@ jobs:
         env > version.txt
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: Update version.txt
+        commit_message: Auto-Update version.txt on release
+        branch: main
+        
