@@ -17,11 +17,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install dependencies
       run: |
-        echo "Done from action" > done.txt
-        echo "version: ${GITHUB_REF_NAME}" > version.txt
-        echo "creator: ${GITHUB_ACTOR}" >> version.txt
+        echo "Done from action." > done.txt
+        env > version.txt
+        echo "FOO" > version.txt
+        echo "Version: ${GITHUB_REF_NAME}" > version.txt
+        echo "Creator: ${GITHUB_ACTOR}" >> version.txt
         NOW=`date`
-        echo "date: ${NOW}" >> version.txt
+        echo "Date: ${NOW}" >> version.txt
         
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
