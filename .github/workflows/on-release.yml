@@ -18,9 +18,16 @@ jobs:
     - name: Install dependencies
       run: |
         echo "Done from action" > done.txt
-        env > version.txt
+        echo "version: ${GITHUB_REF_NAME}" > version.txt
+        echo "creator: ${GITHUB_ACTOR}" >> version.txt
+        NOW=`date`
+        echo "date: ${NOW}" >> version.txt
+        
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Auto-Update version.txt on release
         branch: main
-        
+    - name: move tag on verstion.txt
+      run: |
+        git tag -f ${GITHUB_REF_NAME}
+   
