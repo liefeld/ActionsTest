@@ -15,9 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Update version.txt
       run: |
-        echo "Done from action." > done.txt
         env > version.txt
         echo "FOO" > version.txt
         echo "Version: ${GITHUB_REF_NAME}" > version.txt
@@ -29,7 +30,7 @@ jobs:
       with:
         commit_message: Auto-Update version.txt on release
         branch: main
-    - name: move tag on verstion.txt
+    - name: move tag on version.txt
       run: |
         git tag -f ${GITHUB_REF_NAME}
    
