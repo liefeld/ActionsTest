@@ -1,0 +1,22 @@
+
+name: On Release
+
+on:
+  release:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        echo "Done from action" > done.txt
+        env > version.txt
+    - uses: actions/checkin@v3
