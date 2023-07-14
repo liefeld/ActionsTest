@@ -4,6 +4,7 @@ name: On Release
 on:
   release:
     branches: [ "main" ]
+    types: [published, prereleased]
 
 permissions:
   contents: write
